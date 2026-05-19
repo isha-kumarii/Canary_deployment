@@ -1,0 +1,19 @@
+services:
+  backend:
+    image: eshop-backend:v1
+    container_name: eshop-backend
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      - JWT_SECRET=supersecret
+    restart: unless-stopped
+
+  frontend:
+    image: eshop-frontend:v1
+    container_name: eshop-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

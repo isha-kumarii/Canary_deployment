@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eshop-canary
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eshop
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: eshop
+        version: canary
+    spec:
+      containers:
+      - name: backend
+        image: yourdockerhubusername/eshop-backend:v2
+        ports:
+        - containerPort: 4000
+        env:
+        - name: APP_VERSION
+          value: "v2"

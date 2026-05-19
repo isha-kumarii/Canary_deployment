@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eshop-stable
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: eshop
+      version: stable
+  template:
+    metadata:
+      labels:
+        app: eshop
+        version: stable
+    spec:
+      containers:
+      - name: backend
+        image: yourdockerhubusername/eshop-backend:v1
+        ports:
+        - containerPort: 4000
+        env:
+        - name: APP_VERSION
+          value: "v1"
