@@ -3,12 +3,15 @@ kind: Service
 metadata:
   name: eshop-stable-svc
   namespace: default
+  labels:
+    app: eshop
 spec:
   selector:
     app: eshop
     version: stable
   ports:
-  - port: 80
+  - name: web
+    port: 80
     targetPort: 4000
 ---
 apiVersion: v1
@@ -16,10 +19,13 @@ kind: Service
 metadata:
   name: eshop-canary-svc
   namespace: default
+  labels:
+    app: eshop
 spec:
   selector:
     app: eshop
     version: canary
   ports:
-  - port: 80
+  - name: web
+    port: 80
     targetPort: 4000
