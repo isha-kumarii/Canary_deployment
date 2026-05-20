@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: yourdockerhubusername/eshop-backend:v2
+        image: ishakumarii/eshop-backend:v2
         ports:
         - containerPort: 4000
         env:
